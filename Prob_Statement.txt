@@ -57,3 +57,32 @@ In Sample Case #1, the input is a natural Latin square, which means no row or co
 In Sample Case #2, all rows and columns have repeated elements. Notice that each row or column with repeated elements is counted only once regardless of the number of elements that are repeated or how often they are repeated within the row or column. In addition, notice that some integers in the range 1 through N may be absent from the input.
 
 In Sample Case #3, the leftmost and rightmost columns have repeated elements.
+
+import numpy as np
+for test in range(int(input())):
+    NN = int(input())
+    main = []
+    for mat in range(NN):
+        main.append(list(map(int, input().split())))
+    #print(main)
+    sum = 0
+    for s in range(NN):
+        sum = sum + main[s][s]
+    #print(sum)
+    rct = 0
+    for r in range(NN):
+        for c in range(NN):
+            if main[r].count(main[r][c]) > 1:
+                rct += 1
+                break
+    #print(rct)
+    cct = 0
+    trans = np.array(main)
+    main3 = trans.transpose()
+    main4 = main3.tolist()
+    for r in range(NN):
+        for c in range(NN):
+            if main4[r].count(main4[r][c]) > 1:
+                cct += 1
+                break
+    aa=str(test+1)
